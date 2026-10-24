@@ -1,0 +1,25 @@
+# 학교 안 아바다 (share) — wrangler.toml 설정 예시
+# 실제 프로젝트는 wrangler.jsonc를 사용합니다. 둘 중 하나만 유지하세요.
+
+name = "share"
+main = "server/index.ts"
+compatibility_date = "2026-10-19"
+upload_source_maps = true
+
+[assets]
+not_found_handling = "single-page-application"
+
+[observability]
+enabled = true
+
+[vars]
+# 나이스(NEIS) API 키. 비우거나 SAMPLE이면 샘플 학교 데이터로 동작합니다.
+# 배포 시: npx wrangler secret put NEIS_API_KEY
+NEIS_API_KEY = "SAMPLE"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "share-db"
+# 실제 배포 전: npx wrangler d1 create share-db 로 발급받은 ID로 교체
+database_id = "00000000-0000-0000-0000-000000000001"
+migrations_dir = "migrations"

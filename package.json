@@ -10,19 +10,24 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
     "deploy": "npm run build && wrangler deploy",
-    "cf-typegen": "wrangler types"
+    "cf-typegen": "wrangler types",
+    "db:migrate:local": "wrangler d1 migrations apply share-db --local",
+    "db:migrate:remote": "wrangler d1 migrations apply share-db --remote"
   },
   "dependencies": {
+    "hono": "^4.13.13",
     "vue": "^3.5.42",
     "vue-router": "^5.3.1"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.65.0",
+    "@tailwindcss/vite": "^4.3.3",
     "@tsconfig/node24": "^24.0.5",
     "@types/node": "^24.19.2",
     "@vitejs/plugin-vue": "^6.0.8",
     "@vue/tsconfig": "^0.9.1",
     "npm-run-all2": "^9.0.3",
+    "tailwindcss": "^4.3.3",
     "typescript": "~6.0.0",
     "vite": "^8.2.2",
     "vite-plugin-vue-devtools": "^8.2.1",
